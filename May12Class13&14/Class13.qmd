@@ -1,0 +1,372 @@
+---
+title: "Class 13: RNASeq Analysis with DESeq"
+author: "Mankeerat Rataul"
+format: pdf
+toc: TRUE
+---
+
+```{r}
+library(BiocManager)
+library(DESeq2)
+```
+
+## Background
+
+Today we're going to do an RNA-seq of a dataset on the glucocorticoid steroid dexamethasone, and we will use DESeq for this analysis. 
+
+## Data Import
+
+Let's read the `count` data and `metadata` about this experiment setup from the CSV files supplied: 
+
+```{r}
+# Complete the missing code
+counts <- read.csv("airway_scaledcounts.csv", row.names=1)
+metadata <-  read.csv("airway_metadata.csv")
+
+head(counts)
+metadata
+```
+> Q1. How many genes are in this dataset?
+
+```{r}
+nrow(counts)
+```
+38694 genes total. 
+
+
+> Q2. How many ‘control’ cell lines do we have?
+
+```{r}
+table(metadata$dex)
+```
+4 control and 4 treated cell lines. 
+
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+
+```
+
+
+## Toy differential gene expression
+
+- Find the "control" columns in our 'counts' object
+- Extract just the 'control' column values for all genes
+- Calculate the average value per gene in these "control" columns
+
+The means for control are found below:
+
+```{r}
+control.inds <- metadata$dex == "control"
+control.counts <- counts[, control.inds]
+
+control.mean <- rowMeans(control.counts)
+
+```
+
+> Q3. How would you make the above code in either approach more robust? Is there a function that could help here? 
+
+rowMeans is used to replace the original code's division of rowSums, since if more samples are added then dividing by 4 would not be accurate in the original code. 
+
+> Q4. Follow the same procedure for the treated samples (i.e. calculate the mean per gene across drug treated samples and assign to a labeled vector called treated.mean)
+
+
+The means for treated are found below
+
+```{r}
+treated.inds <- metadata$dex == "treated"
+treated.counts <- counts[, treated.inds]
+
+treated.mean <- rowMeans(treated.counts)
+
+```
+
+> Q5 (a). Create a scatter plot showing the mean of the treated samples against the mean of the control samples. Your plot should look something like the following.
+
+
+
+And below we append the columns to make a full dataset and then plot the differences. 
+```{r}
+meancounts <- data.frame(control.mean, treated.mean)
+
+plot(meancounts)
+```
+
+
+> Q5 (b).You could also use the ggplot2 package to make this figure producing the plot below. What geom_?() function would you use for this plot?
+
+You would use `geom_point` to do this. 
+
+> Q6. Try plotting both axes on a log scale. What is the argument to plot() that allows you to do this?
+
+You would add the argument `log="x"` within the parentheses after a comma to plot. I used ggplot instead though with scale_x_log10()
+
+
+
+It seems like there aren't 38000 datapoints because most of them are covering each other up. I will try to employ a log scale to combat this high skew. 
+
+```{r}
+ggplot(meancounts, aes(control.mean, treated.mean)) +
+  geom_point(size=0.01) +
+  scale_x_log10() +
+  scale_y_log10()
+```
+
+We most often use log2 transform for this kind of data because it makes the interpretation of this data much easier. 
+
+```{r}
+ggplot(meancounts, aes(control.mean, treated.mean)) +
+  geom_point(size=0.01) +
+  scale_x_continuous(transform = "log2") +
+  scale_y_continuous(transform = "log2")
+```
+
+> Q7. What is the purpose of the arr.ind argument in the which() function call above? Why would we then take the first column of the output and need to call the unique() function?
+
+
+arr.ind just returns the values themselves instead of a binary TRUE or FALSE for each value in the array. It makes the expression act as a filter instead of some sort of a logic gate. 
+
+
+We call this fraction the "fold change" for log2 
+
+```{r}
+meancounts$log2fc <- log2(meancounts$treated.mean/meancounts$control.mean)
+
+head(meancounts)
+
+noninfinds <- is.finite(meancounts$log2fc)
+noninfmeancounts <- meancounts[noninfinds,]
+
+head(noninfmeancounts)
+
+
+```
+
+A common 'rule of thumb' threshold for calling a gene 'upregulated' or 'downregulated' is a log2 fold-change value of +2 or -2 or greater. 
+
+
+> Q8. Using the up.ind vector above can you determine how many up regulated genes we have at the greater than 2 fc level?
+
+```{r}
+up.ind <- noninfmeancounts$log2fc > 2
+sum(up.ind)
+```
+Yes, there are 250 upregulated genes. 
+
+> Q9. Using the down.ind vector above can you determine how many down regulated genes we have at the greater than 2 fc level? 
+
+```{r}
+down.ind <- noninfmeancounts$log2fc < (-2)
+sum(down.ind)
+```
+Yes, there are 367 downregulated genes lower than -2. 
+
+> Q10. Do you trust these results? Why or why not?
+
+
+Not at all, there were no significance tests done to determine if these are actually different, and some may be very close to the threshold. 
+
+
+## DESeq
+
+Let's do a proper analysis and not forget about stat significance. 
+
+For this we will use the **DESeq2** package
+
+```{r, message=FALSE}
+library(DESeq2)
+```
+
+To run a DESeq analysis we need 2 inputs:
+
+- `countdata` or gene counts across diff experiments 
+- `colData` or our metadata about those count columns 
+
+
+```{r, warning=FALSE}
+dds <- DESeqDataSetFromMatrix(countData=counts,
+                              colData=metadata,
+                              design = ~dex)
+
+
+```
+
+
+Now we can run the DESeq analysis pipeline using this `dds` object that has all the inputs we need. 
+
+```{r}
+dds <- DESeq(dds)
+res <- results(dds)
+head(res)
+```
+
+
+## Volcano plot
+
+This is useful for data with the log fold chnage and adjusted p value into one plot. Basically looks like a volcano almost and above a certain threshold are significant points with the rest grouped into useless. 
+
+```{r}
+ggplot(res, aes(x=log2FoldChange, y=padj)) +
+  geom_point()
+```
+Useless plot, we don't care about the very high p values so it being at such high scale is wasteful of plotting space. Better to scale on a log so smaller p values are magnified that are below the alpha threshold such as 0.01 or 0.05. 
+
+The y axis is flipped using -log instead of positive so that the volcano is upside up, with higher significance due to lower p being higher. 
+
+```{r}
+ggplot(res, aes(x=log2FoldChange, y=-log(padj))) +
+  geom_point()
+```
+Nearly perfect, just needs threshold to show which points are useful. I'll try using plotly so that you can see the genes. 
+
+
+> Q. Add annotation to this volcano plot including the log2 fold-change thresholds of +2 and -2 and the p-value threshold of 0.05. Also color up just the genes that meet both these thresholds. These are the ones we will focus on next day!
+
+
+```{r}
+library(plotly)
+
+res$sigpos <- ifelse(res$padj < 0.05 & res$log2FoldChange > 2, "sigpos", ifelse(res$padj <0.05 & res$log2FoldChange < -2, "sigpos", ifelse(res$padj>0.05 & res$log2FoldChange < -2, "nonsigpos", ifelse(res$padj>0.05 & res$log2FoldChange > 2, "nonsigpos", "nonsig"))))
+
+res
+
+```
+
+#```{r}
+plot_ly(as.data.frame(res), x=res$log2FoldChange, y=-log(res$padj), type="scatter", mode="markers", marker=list(size=4), text=~row.names(res), hoverinfo="text", color = res$sigpos, colors = c("sigpos" = "blue", "nonsigpos" = "red", "nonsig" = "darkgray")) %>% layout(dragmode = 'zoom') %>% config(scrollZoom=TRUE)
+#```
+
+```{r}
+write.csv(res, file="myresults.csv")
+```
+
+
+## Adding annotation data
+
+We need to map or translate our ENSEMBLE gene identifiers in our results object to date to the identifiers used in different databases. 
+
+```{r, message=FALSE}
+library("AnnotationDbi")
+library("org.Hs.eg.db")
+```
+We can see the columns in `org.Hs.eg.db` that list the different databases we can map between:
+
+```{r}
+columns(org.Hs.eg.db)
+```
+We can now use the `mapIDs()` function to map between these different database identifier formats:
+
+```{r}
+res$symbol <- mapIds(org.Hs.eg.db,
+       keys=row.names(res), 
+       keytype="ENSEMBL",
+       column="SYMBOL")
+```
+
+> Q11. Run the mapIds() function two more times to add the Entrez ID and UniProt accession and GENENAME as new columns called res$entrez, res$uniprot and res$genename.
+
+> Q. Can you map to "GENENAME" and add as a new col to our `res` object
+
+> Q. Add "ENTREZID" as `res$entrez`
+
+
+```{r}
+res$genename <- mapIds(org.Hs.eg.db,
+       keys=row.names(res), 
+       keytype="ENSEMBL",
+       column="GENENAME")
+
+res$entrez <- mapIds(org.Hs.eg.db,
+       keys=row.names(res), 
+       keytype="ENSEMBL",
+       column="ENTREZID")
+```
+
+
+
+
+#```{r}
+plot_ly(as.data.frame(res), x=res$log2FoldChange, y=-log(res$padj), type="scatter", mode="markers", marker=list(size=4), text=res$symbol, hoverinfo="text", color = res$sigpos, colors = c("sigpos" = "blue", "nonsigpos" = "red", "nonsig" = "darkgray")) %>% layout(dragmode = 'zoom') %>% config(scrollZoom=TRUE)
+#```
+
+
+
+
+## Pathway analysis
+
+Now that we have our annotated results with their log2 fold-change and p-values we can figure out which biological pathways and processes these genes are involved with. 
+
+We will use the **gage** and **pathview** packages for this step and we an install them with `BiocManager::install(c("pathview", "gage", "gageData"))`
+
+```{r}
+library(gage)
+library(gageData)
+library(pathview)
+```
+
+Let's have a peek at gageData
+
+```{r}
+data(kegg.sets.hs)
+
+head(kegg.sets.hs, 2)
+```
+
+We need a named vector of importance (e.g. fold change values) that has gene ids as names. These names need to be in the correct format (using the correct database format for the IDs). 
+
+Here we will make an input vector called `foldchanges` that has "entrez" ids as names. 
+
+```{r}
+foldchanges <- res$log2FoldChange
+names(foldchanges) <- res$entrez
+```
+
+Now we can run `gage()` to do our pathway analysis. 
+
+```{r}
+keggres = gage(foldchanges, gsets=kegg.sets.hs)
+```
+
+
+
+```{r}
+attributes(keggres)
+
+```
+
+
+The top 3 overlapping pathways from k
+
+
+```{r}
+head(keggres$less, 3)
+```
+
+Now we can use the **pathview** package with the found KEGG pathway IDs (e.g. hsa05310 for asthma pathway) to make a pathway figure showing our differential expressed genes (DEGs). 
+
+
+
+```{r}
+pathview(gene.data=foldchanges, pathway.id="hsa05310")
+```
+
+![](hsa05310.pathview.png) 
+
+> Q12. Can you do the same procedure as above to plot the pathview figures for the top 2 down-reguled pathways?
+
+```{r}
+pathview(gene.data=foldchanges, pathway.id="hsa05332")
+pathview(gene.data=foldchanges, pathway.id="hsa04940")
+```
+
+![](hsa05332.pathview.png) 
+![](hsa04940.pathview.png) 
+
+
+## Save our annotated results
+
+
+```{r}
+write.csv(res, file="myresults_annotated.csv")
+```

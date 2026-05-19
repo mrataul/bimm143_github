@@ -1,0 +1,212 @@
+---
+title: "Class 11: AlphaFold"
+author: "Mankeerat Rataul"
+format: pdf
+toc: TRUE
+---
+
+```{r}
+library(bio3d)
+
+pdb <- read.pdb("HIV_DIMER_23119_0.result/HIV_DIMER_23119_0/HIV_DIMER_23119_0_unrelaxed_rank_001_alphafold2_multimer_v3_model_4_seed_000.pdb")
+
+pdb
+
+head(pdb$atom)
+```
+
+
+Make a vector of input PDB file names that we can read into R
+
+```{r}
+pdbfiles <- list.files("HIV_DIMER_23119_0.result/HIV_DIMER_23119_0/", pattern=".pdb", full.names=TRUE)
+
+pdbfiles
+```
+Below is the molstar image overlying it. Unfortunately it is not possible to do both 
+parts of the dimer for overlaying since there are some strange errors, so I just aligned the right side. 
+
+![HIV Dimer Structure Overlay](MolstarofHIVDimer.png)
+
+
+## Custom analysis of resulting models
+
+```{r}
+pdbs <- pdbaln(pdbfiles, fit=TRUE, exefile="msa")
+
+pdbs
+
+
+```
+```{r}
+rd <- rmsd(pdbs, fit=T)
+
+range(rd)
+```
+
+Drawing a heatmap of the RMSD matrix values
+
+```{r}
+library(pheatmap)
+
+colnames(rd) <- paste0("m",1:5)
+rownames(rd) <- paste0("m",1:5)
+pheatmap(rd)
+```
+
+Below will be a read of all the pLDDT values
+
+```{r}
+pdb2 <- read.pdb("1HSG")
+```
+
+```{r}
+plotb3(pdbs$b[1,], typ="l", lwd=2, sse=pdb)
+points(pdbs$b[2,], typ="l", col="red")
+points(pdbs$b[3,], typ="l", col="blue")
+points(pdbs$b[4,], typ="l", col="darkgreen")
+points(pdbs$b[5,], typ="l", col="orange")
+abline(v=100, col="gray")
+```
+
+```{r}
+core <- core.find(pdbs)
+```
+```{r}
+core.inds <- print(core, vol=0.5)
+
+xyz <- pdbfit(pdbs, core.inds, outpath="corefit_structures")
+```
+```{r}
+rf <- rmsf(xyz)
+
+
+
+plotb3(rf, sse=pdb)
+abline(v=100, col="gray", ylab="RMSF")
+```
+## Predicted Alignment Error for domains
+
+
+```{r}
+library(jsonlite)
+
+results_dir <- "HIV_DIMER_23119_0.result/HIV_DIMER_23119_0/"
+# Listing of all PAE JSON files
+pae_files <- list.files(path=results_dir,
+                        pattern=".*model.*\\.json",
+                        full.names = TRUE)
+
+```
+
+
+
+
+```{r}
+pae1 <- read_json(pae_files[1],simplifyVector = TRUE)
+pae5 <- read_json(pae_files[5],simplifyVector = TRUE)
+
+attributes(pae1)
+
+
+
+
+
+# Per-residue pLDDT scores 
+#  same as B-factor of PDB..
+head(pae1$plddt) 
+```
+
+Maximum PAE values of each model to determine which has the most error:
+
+```{r}
+pae1$max_pae
+pae5$max_pae
+```
+Model 1 has lower PAE than model 5 thus is better due to having lower error. 
+
+
+The below is an overall error frame showing the residues in the prediction vs the real one for model 1:
+
+```{r}
+plot.dmat(pae1$pae, 
+          xlab="Residue Position (i)",
+          ylab="Residue Position (j)")
+```
+
+Whereas the following is from model 5:
+
+```{r}
+plot.dmat(pae5$pae, 
+          xlab="Residue Position (i)",
+          ylab="Residue Position (j)",
+          grid.col = "black",
+          zlim=c(0,30))
+```
+
+But the ranges are messed up because model 1 shows more finer error thus use the following to actually view it:
+
+```{r}
+plot.dmat(pae1$pae, 
+          xlab="Residue Position (i)",
+          ylab="Residue Position (j)",
+          grid.col = "black",
+          zlim=c(0,30))
+```
+
+
+## Residue Conservation from alignment file
+
+Loads the file a3m into a variable for easier use:
+
+```{r}
+aln_file <- list.files(path=results_dir,
+                       pattern=".a3m$",
+                        full.names = TRUE)
+aln_file
+```
+
+
+Reads the fasta from the file above into a data frame:
+
+```{r}
+aln <- read.fasta(aln_file[1], to.upper = TRUE)
+```
+
+Checks the number of sequences in this alignment:
+
+```{r}
+dim(aln$ali)
+```
+
+
+
+
+The below ranks sequences by their conservation amount for certain residues. 
+
+```{r}
+sim <- conserv(aln)
+plotb3(sim[1:99], sse=trim.pdb(pdb, chain="A"),
+       ylab="Conservation Score")
+```
+
+```{r}
+con <- consensus(aln, cutoff = 0.9)
+con$seq
+```
+
+Visualization of important sites:
+
+
+The below shows a consensus structure based on a consensus sequence. This was received from molstar. 
+
+```{r}
+m1.pdb <- read.pdb(pdbfiles[1])
+occ <- vec2resno(c(sim[1:99], sim[1:99]), m1.pdb$atom$resno)
+write.pdb(m1.pdb, o=occ, file="m1_conserv.pdb")
+```
+
+The below shows purple as more conserved sites and white as more variable sites
+
+![1HSG Predicted Consensus Structure](M1_CONSERV.PDB.png)
+
