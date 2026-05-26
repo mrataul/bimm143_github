@@ -1,0 +1,7 @@
+"0",""
+"0","trueweirdcomparison <- read.csv(""AnalysisOfAllFeatures.csv"", row.names=1)"
+"0",""
+"0",""
+"0","songcomparison <- read.csv(""features2_artist_flags_fixed.csv"", row.names=1)"
+"0",""
+"0","head(songcomparison)"

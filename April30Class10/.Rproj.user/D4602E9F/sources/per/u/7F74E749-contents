@@ -1,0 +1,56 @@
+---
+title: "TestNovelGene"
+author: "Mankeerat Rataul"
+format: html
+---
+
+```{r}
+pdbfiles <- list.files("fold_cd55_like_protein/", pattern=".pdb", full.names=TRUE)
+
+pdbfiles
+
+library(bio3d)
+library(bio3dview)
+library(NGLVieweR)
+
+
+pdb_data <- read.pdb(pdbfiles)
+
+pdb_2 <- read.pdb("1H03")
+
+model1 <- biounit(pdb_2)
+
+model2 <- model1[[1]]
+
+view.pdb(pdb_data)
+
+view.pdb(model2)
+
+```
+Below is AI part
+
+```{r}
+library(msa) # Ensure msa is loaded
+
+library(NGLVieweR)
+
+# 1. Prepare your fitted model as before
+aln <- struct.aln(fixed = pdb_data, mobile = model2, exefile = "msa")
+model2_fitted <- model2
+model2_fitted$xyz <- aln$xyz
+
+# 2. Write them to temporary files
+tmp1 <- tempfile(fileext = ".pdb")
+tmp2 <- tempfile(fileext = ".pdb")
+write.pdb(pdb_data, file = tmp1)
+write.pdb(model2_fitted, file = tmp2)
+
+# 3. Use the filenames in NGLVieweR
+NGLVieweR(tmp1) %>%
+  addRepresentation("cartoon", param = list(color = "blue")) %>%
+  addStructure(tmp2) %>%
+  addRepresentation("cartoon", param = list(color = "red"))
+
+
+```
+

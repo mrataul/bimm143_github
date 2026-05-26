@@ -1,0 +1,8 @@
+"0",""
+"0","library(NGLVieweR)"
+"0",""
+"0","active_site <- atom.select(pdb, resno=25)"
+"0",""
+"0","view.pdb(pdb, highlight=active_site, highlight.style = ""spacefill"", cols = c(""#98FF98"", ""#C9A0DC""), backgroundColor = ""skyblue"") |>"
+"0",""
+"0","setRock()"

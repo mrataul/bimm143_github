@@ -1,0 +1,6 @@
+"0","p <- ggplot(gapminder) + "
+"0","  aes(gdpPercap, lifeExp, col=continent, size=pop) +"
+"0","  geom_point(alpha=0.3) + "
+"0","  theme_light() + "
+"0","  labs(x=""GDP Per Capita"", y=""Life Expectancy (years)"", title=""Life expectancy in relation to GDP Per Capita"")"
+"0","p"

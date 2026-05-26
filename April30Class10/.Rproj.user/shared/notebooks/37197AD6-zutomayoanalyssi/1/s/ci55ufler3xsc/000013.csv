@@ -1,0 +1,4 @@
+"0",""
+"0","ggplot(weird_pca$rotation) +"
+"0","  aes(PC2, reorder(rownames(weird_pca$rotation), PC2)) +"
+"0","  geom_col()"

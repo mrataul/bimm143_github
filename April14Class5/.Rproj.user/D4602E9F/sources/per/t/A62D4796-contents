@@ -1,0 +1,164 @@
+---
+title: "Class 5: ggplot2 viz"
+author: "Mankeerat Rataul"
+format: pdf
+toc: true
+---
+
+## Background
+
+There are many graphics systems in R for making plots and figures. These include so-called *"base R" graphics* like `plot()` and **ggplot2** which is an add on package. 
+
+Let's compare how we make a simple figure with these two systems:
+
+We can use the in-built `cars` dataset:
+
+```{r}
+head(cars)
+plot(cars)
+
+```
+Before I can use ggplot2 I need to install it on my computer.
+
+To install it, we can use the function `install.packages()`, however we never run this function in the document because it would redownload it constantly. Instead this is done in the console.
+
+Below are the 3 commands used for the libraries:
+
+```{r}
+
+# install.packages("ggplot2")
+# install.packages("gapminder")
+# install.packages("dplyr")
+
+```
+Once installed, we need to load up the package into our R brain:
+
+```{r, message=FALSE, warning=FALSE}
+library(ggplot2)
+library(gapminder)
+library(dplyr)
+```
+
+
+The main function in ggplot2's package is called `ggplot()`
+
+```{r}
+ggplot(cars)
+```
+
+Every ggplot has at least 3 layers:
+
+- the **data** (data.frame of what we want to plot)
+- the **aes** (how data maps onto plot)
+- the **geom** (how we want the plot to be drawn)
+
+```{r}
+ggplot(cars) + 
+  aes(x=speed, y=dist) +
+  geom_point()
+```
+
+## Add some customization/features
+
+Let's add a trendline that shows the relationship between speed + distance. 
+
+```{r}
+ggplot(cars) + 
+  aes(x=speed, y=dist) +
+  geom_point() +
+  geom_smooth(method="lm", se=FALSE) +
+  theme_light() +
+  labs(title="Stopping Distance of Old Cars", x="Speed (MPH)", y="Distance(ft)")
+```
+
+## Gene Expression Figure
+
+```{r}
+url <- "https://bioboot.github.io/bimm143_S20/class-material/up_down_expression.txt"
+genes <- read.delim(url)
+head(genes)
+
+
+
+head(genes[genes$State == "up",])
+
+table(genes$State)
+
+
+round( table(genes$State)/nrow(genes) * 100, 2 )
+```
+
+```{r}
+colnames(genes)
+```
+
+
+```{r}
+p <- ggplot(genes) +
+  aes(x=Condition1, y=Condition2, col=State) +
+  geom_point() +
+  theme_light() +
+  labs(x="No drug", y="Drug", title="Expression chnages upon GLP-1 inhibitor")
+
+p + scale_color_manual( values=c("blue","gray","orange"))
+```
+
+## Going further into the GapMinder dataset
+
+Here is the read of it
+
+```{r}
+head(gapminder)
+```
+
+>Q. How many entries are there?
+
+```{r}
+nrow(gapminder)
+```
+>Q. How many countries are in this dataset?
+
+```{r}
+length(unique(gapminder$country))
+```
+
+Let's make our first plot of this gapminder dataset
+
+```{r}
+p <- ggplot(gapminder) + 
+  aes(gdpPercap, lifeExp, col=continent, size=pop) +
+  geom_point(alpha=0.3) + 
+  theme_light() + 
+  labs(x="GDP Per Capita", y="Life Expectancy (years)", title="Life expectancy in relation to GDP Per Capita")
+p
+```
+
+I can add more layers to change the call of p
+
+```{r}
+p +
+  facet_wrap(~gapminder$continent)
+```
+
+Make a plot for 1977 and 2007
+```{r}
+gapminder_1977 <- p +
+  gapminder %>% filter(year==1977) +
+  labs(title="Life expectancy in relation to GDP Per Capita, 1997")
+
+gapminder_2007 <- p + 
+  gapminder %>% filter(year==2007) + 
+  labs(title="Life expectancy in relation to GDP Per Capita, 2007")
+
+gapminder_1977
+gapminder_2007
+```
+>Q. Make a histogram of lifeExp colored by continent (try using `fill-continent` or `col=continent`)
+
+```{r}
+ggplot(gapminder) + 
+  aes(lifeExp, fill=continent) +
+  geom_histogram()
+
+```
+

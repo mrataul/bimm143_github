@@ -1,0 +1,65 @@
+"""
+download_songs.py
+-----------------
+Paste YouTube URLs (single videos or playlists) and download audio as MP3
+into the zutomayo_mp3s folder.
+
+Usage:
+    python download_songs.py
+
+Then paste URLs one per line. Enter a blank line or Ctrl+C when done.
+"""
+
+import subprocess
+import sys
+from pathlib import Path
+
+OUT_DIR = Path(__file__).parent / "mrsgreenapple_mp3s"
+
+
+def download(url):
+    cmd = [
+        sys.executable, "-m", "yt_dlp",
+        "--extract-audio",
+        "--audio-format", "mp3",
+        "--audio-quality", "0",
+        "--embed-thumbnail",
+        "--add-metadata",
+        "--output", str(OUT_DIR / "%(title)s.%(ext)s"),
+        url.strip(),
+    ]
+    subprocess.run(cmd)
+
+
+def main():
+    OUT_DIR.mkdir(exist_ok=True)
+    print(f"Audio will be saved to: {OUT_DIR}")
+    print("Paste YouTube URLs (videos or playlists), one per line.")
+    print("Blank line or Ctrl+C to start downloading.\n")
+
+    urls = []
+    try:
+        while True:
+            line = input("> ").strip()
+            if not line:
+                break
+            urls.append(line)
+    except (KeyboardInterrupt, EOFError):
+        print()
+
+    if not urls:
+        print("No URLs provided.")
+        return
+
+    print(f"\nDownloading {len(urls)} URL(s)...\n")
+    for i, url in enumerate(urls, 1):
+        print(f"[{i}/{len(urls)}] {url}")
+        download(url)
+        print()
+
+    mp3s = list(OUT_DIR.glob("*.mp3"))
+    print(f"Done. {len(mp3s)} MP3 file(s) in {OUT_DIR}")
+
+
+if __name__ == "__main__":
+    main()

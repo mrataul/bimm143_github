@@ -1,0 +1,6 @@
+"0","#Converting all characters to numbers "
+"0","pdb$X.ray <- as.numeric(gsub("","", """", pdb$X.ray))"
+"0","pdb$EM <- as.numeric(gsub("","","""",pdb$EM))"
+"0","pdb$NMR <- as.numeric(gsub("","","""", pdb$NMR))"
+"0","pdb$Total <- as.numeric(gsub("","","""",pdb$Total))"
+"0","pdb"

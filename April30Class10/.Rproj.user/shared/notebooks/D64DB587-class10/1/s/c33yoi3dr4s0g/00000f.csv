@@ -1,0 +1,6 @@
+"0","#install.packages(""pak"")"
+"0",""
+"0","#pak::pkg_install(c(""bioboot/bio3dview"", ""NGLVieweR"", ""bioc::msa""))"
+"0",""
+"0",""
+"0",""

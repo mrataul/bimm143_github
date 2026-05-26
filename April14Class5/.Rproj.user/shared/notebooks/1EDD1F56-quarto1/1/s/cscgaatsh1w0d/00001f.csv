@@ -1,0 +1,7 @@
+"0","p <- ggplot(genes) +"
+"0","  aes(x=Condition1, y=Condition2, col=State) +"
+"0","  geom_point() +"
+"0","  theme_light() +"
+"0","  labs(x=""No drug"", y=""Drug"", title=""Expression chnages upon GLP-1 inhibitor"")"
+"0",""
+"0","p + scale_color_manual( values=c(""blue"",""gray"",""orange""))"

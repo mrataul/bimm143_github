@@ -1,0 +1,3 @@
+"0","library(pheatmap)"
+"0",""
+"0","pheatmap( as.matrix(x) )"

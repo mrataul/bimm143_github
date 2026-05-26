@@ -1,0 +1,4 @@
+- source: class10.qmd
+  posit-connect-cloud:
+    - id: 019e0e8f-bba6-9606-e045-b659709d67e9
+      url: https://connect.posit.cloud/keet1/content/019e0e8f-bba6-9606-e045-b659709d67e9

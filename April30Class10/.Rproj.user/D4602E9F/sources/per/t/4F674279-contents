@@ -1,0 +1,154 @@
+---
+title: "Zutomayo / Yorushika / Mrs. Green Apple — PCA findings"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: flatly
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE,
+                      fig.width = 8, fig.height = 5)
+library(dplyr); library(ggplot2); library(tibble); library(knitr)
+
+source("R/01_load_clean.R")
+source("R/02_consolidate.R")
+source("R/03_pca.R")
+source("R/04_artist_compare.R")
+
+raw     <- load_raw("../TruerChordAnalysis3justzuto.csv")
+consol  <- consolidate(raw)
+pca_res <- run_pca(consol, out_dir = "output")
+cmp_res <- artist_compare(consol, pca_res, out_dir = "output")
+```
+
+## 1. Dataset
+
+The audio-feature CSV `TruerChordAnalysis3justzuto.csv` contains
+**`r nrow(raw)`** tracks across three artists, after dropping
+malformed rows. Track counts:
+
+```{r}
+artist_counts(raw) |> kable()
+```
+
+## 2. Variable consolidation
+
+The raw file ships **101** columns. Many are redundant, sparse, or
+collinear with each other. The decisions made (in
+`R/02_consolidate.R`) were:
+
+| Group | Action | Reason |
+|---|---|---|
+| `artist`, `Zuttomayo`, `artist_yorushika` | dropped | redundant with `artist_canonical` |
+| `scale` | dropped | already encoded by `scale_root` + `scale_mode` |
+| `mode_*_match` (×13) | dropped | highly collinear; the dominant mode is in `scale_mode` |
+| `primary_function_ratio` | dropped | exactly = `tonic + dominant + subdominant` ratios |
+| `chord_diversity` | dropped | collinear with integer `unique_chords` |
+| `band_brilliance_ratio` | dropped | the seven band ratios sum to 1 — drop one to break collinearity |
+| `energy_start`, `energy_end` | dropped | re-encoded by `energy_buildup`; `energy_mid` retained |
+| `mfcc_*_std` | dropped | means kept; std mostly redundant for genre-scale separation |
+| `inst_music` | dropped | near-constant (≈1 for every track) |
+| 30 individual `inst_*` probabilities | **rolled up** | summed into 7 instrument families: guitars, bass, bowed strings, keys, drums, winds/brass, vocals |
+
+The final feature matrix has **`r length(consol$numeric_cols)`**
+numeric variables × **`r nrow(consol$data)`** tracks.
+
+## 3. PCA
+
+```{r}
+pca_res$var_exp |>
+  head(8) |>
+  mutate(variance_explained = scales::percent(variance_explained, 0.1),
+         cumulative         = scales::percent(cumulative, 0.1)) |>
+  kable(caption = "Variance explained by the first 8 components")
+```
+
+PC1 alone captures
+**`r scales::percent(pca_res$var_exp$variance_explained[1], 0.1)`** of
+the total variance; PC1+PC2 together capture
+**`r scales::percent(sum(pca_res$var_exp$variance_explained[1:2]), 0.1)`**.
+
+### Score plot
+
+![](output/02_pca_scores_pc1_pc2.png)
+
+### What drives each component?
+
+The top variables (by absolute loading) for the first four PCs:
+
+```{r}
+pca_res$top_loadings |>
+  group_by(PC) |>
+  slice_head(n = 6) |>
+  mutate(loading = round(loading, 3)) |>
+  kable()
+```
+
+![](output/04_top_loadings.png)
+
+### Biplot
+
+![](output/05_biplot.png)
+
+## 4. Do the artists actually separate?
+
+### Centroids in PC space
+
+![](output/06_artist_centroids.png)
+
+```{r}
+cmp_res$centroids |> kable(digits = 2)
+```
+
+### Unsupervised k-means (k = 3)
+
+If the artists really inhabit different regions of feature space,
+unsupervised k-means clustering with k = 3 should approximately
+recover the artist labels.
+
+```{r}
+cmp_res$cluster_tbl |>
+  as.data.frame.matrix() |>
+  kable(caption = "Rows: artist label.  Columns: k-means cluster.")
+```
+
+Cluster purity (highest-frequency artist within each cluster, divided
+by all tracks): **`r sprintf("%.3f", cmp_res$purity)`**.
+
+### MANOVA on PC1..PC5
+
+```{r}
+if (!is.null(cmp_res$manova)) print(cmp_res$manova)
+```
+
+## 5. What makes Zutomayo "Zutomayo"?
+
+Cohen's *d* between Zutomayo and the pooled
+{Yorushika, Mrs. Green Apple} group, on each consolidated feature.
+Positive = larger in Zutomayo.
+
+![](output/07_zutomayo_vs_rest.png)
+
+Top features (full table in `output/zutomayo_vs_rest_features.csv`):
+
+```{r}
+cmp_res$feat_stats |>
+  slice_head(n = 12) |>
+  mutate(across(where(is.numeric), \(x) round(x, 3))) |>
+  kable()
+```
+
+## 6. Files produced
+
+All artefacts land in `output/`:
+
+* `consolidated_features.csv` — the post-consolidation matrix
+* `variance_explained.csv`, `pca_scores.csv`, `pca_loadings.csv`,
+  `pca_top_loadings.csv`
+* `01_scree.png` … `07_zutomayo_vs_rest.png`
+* `artist_centroids.csv`, `manova_PCs.txt`,
+  `kmeans_artist_x_cluster.csv`, `kmeans_purity.txt`,
+  `zutomayo_vs_rest_features.csv`

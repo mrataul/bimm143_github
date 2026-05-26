@@ -1,0 +1,6 @@
+"0","ggplot(cars) + "
+"0","  aes(x=speed, y=dist) +"
+"0","  geom_point() +"
+"0","  geom_smooth(method=""lm"", se=FALSE) +"
+"0","  theme_light() +"
+"0","  labs(title=""Stopping Distance of Old Cars"", x=""Speed (MPH)"", y=""Distance(ft)"")"

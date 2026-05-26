@@ -1,0 +1,2 @@
+"0","wisc.data <- wisc.df[,-1]"
+"0","head(wisc.data, 3)"

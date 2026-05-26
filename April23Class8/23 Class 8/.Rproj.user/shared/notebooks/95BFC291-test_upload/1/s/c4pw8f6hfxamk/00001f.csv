@@ -1,0 +1,3 @@
+"0","ggplot(compca$rotation) +"
+"0","  aes(PC1, reorder(rownames(compca$rotation), PC1)) +"
+"0","  geom_col()"

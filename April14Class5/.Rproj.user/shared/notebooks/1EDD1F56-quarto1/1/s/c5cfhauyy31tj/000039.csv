@@ -1,0 +1,4 @@
+"0","ggplot(gapminder) + "
+"0","  aes(lifeExp, fill=continent) +"
+"0","  geom_histogram()"
+"0",""

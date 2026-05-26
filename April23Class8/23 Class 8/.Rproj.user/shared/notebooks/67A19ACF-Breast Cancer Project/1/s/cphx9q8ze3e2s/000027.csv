@@ -1,0 +1,2 @@
+"0","wisc.hclust <- hclust(dist(scale(wisc.data)))"
+"0","plot(wisc.hclust)"

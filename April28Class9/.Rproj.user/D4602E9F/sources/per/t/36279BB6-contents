@@ -1,0 +1,62 @@
+---
+title: "Zutomayo Analysis"
+format: html
+---
+
+
+```{r}
+zutomayo <- read.csv("Zutomayo_final.csv", row.names=1)
+
+zutomayo
+```
+```{r}
+library(ggplot2)
+```
+
+
+
+```{r, fig.height=15, fig.width=10}
+
+
+
+ggplot(zutomayo, aes(views, reorder(rownames(zutomayo), views))) +
+  geom_col() + 
+  ylab("")
+```
+
+```{r, fig.height=15, fig.width=10}
+cij <- cor(zutomayo)
+
+# install.packages("corrplot")
+library(corrplot)
+
+corrplot(cij)
+```
+```{r}
+pca <- prcomp(zutomayo, scale=TRUE)
+summary(pca)
+```
+
+
+```{r, fig.height=15, fig.width=15}
+
+
+library(ggrepel)
+ggplot(pca$x, aes(PC1, PC3, label=row.names(pca$x))) +
+  geom_point(size = (zutomayo$log_views)) + 
+  geom_text_repel(size=3.3, max.overlaps = 7)
+```
+
+
+```{r}
+ggplot(pca$rotation) +
+  aes(PC1, reorder(rownames(pca$rotation), PC1)) +
+  geom_col()
+
+
+ggplot(pca$rotation) +
+  aes(PC3, reorder(rownames(pca$rotation), PC3)) +
+  geom_col()
+```
+
+

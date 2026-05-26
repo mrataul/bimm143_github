@@ -1,0 +1,3 @@
+"0","d <- dist(wisc.pr$x[,1:30])"
+"0","wisc.pr.hclust <- hclust(d, method=""ward.D2"")"
+"0","plot(wisc.pr.hclust)"

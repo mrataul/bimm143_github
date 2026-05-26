@@ -1,0 +1,6 @@
+"0","ggplot(pca$rotation) +"
+"0","  aes(PC1, reorder(rownames(pca$rotation), PC1)) +"
+"0","  geom_col(fill= ""steelblue"") +"
+"0","  xlab(""PC1 loading score"") + "
+"0","  ylab("""") +"
+"0","  theme_bw()"

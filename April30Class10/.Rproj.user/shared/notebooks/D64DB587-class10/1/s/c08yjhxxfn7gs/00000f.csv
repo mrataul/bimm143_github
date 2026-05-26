@@ -1,0 +1,39 @@
+"0","adk <- read.pdb(""1TAQ"")"
+"1","  Note: Accessing on-line PDB file
+"
+"0","adk"
+"1","
+ Call:  "
+"1",""
+"1","read.pdb(file = ""1TAQ"")"
+"1",""
+"1","
+"
+"1","
+   Total Models#: 1
+     Total Atoms#: 6747,  XYZs#: 20241  Chains#: 1  (values: A)
+
+     Protein Atoms#: 6432  (residues/Calpha atoms#: 807)
+     Nucleic acid Atoms#: 0  (residues/phosphate atoms#: 0)
+
+     Non-protein/nucleic Atoms#: 315  (residues: 296)
+     Non-protein/nucleic resid values: [ BGL (1), HOH (294), ZN (1) ]
+
+"
+"1","   Protein sequence:
+"
+"1",""
+"1","      PKGRVLLVDGHHLAYRTFHALKGLTTSRGEPVQAVYGFAKSLLKALKEDGDAVIVVFDAR
+      APTPEDFPRQLALIKELVDLLGLARLEVPGYEADDVLASLAKKAEKEGYEVRILTADKDL
+      YQLLSDRIHVLHPEGYLITPAWLWEKYGLRPDQWADYRALTGDESDNLPGVKGIGEKTAR
+      KLLEEWGSLEALLKNLDRLKPAIREKILAHMDDLKLSWDLAKVRT...<cut>...SAKE"
+"1",""
+"1","
+
+"
+"1","+ attr: atom, xyz, seqres, helix, sheet,"
+"1","
+"
+"1","        calpha, remark, call"
+"1","
+"

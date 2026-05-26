@@ -1,0 +1,6 @@
+"0",""
+"0",""
+"0",""
+"0","ggplot(zutomayo, aes(views, reorder(rownames(zutomayo), views))) +"
+"0","  geom_col() + "
+"0","  ylab("""")"

@@ -1,0 +1,6 @@
+"0",""
+"0",""
+"0","library(ggrepel)"
+"0","ggplot(pca$x, aes(PC1, PC3, label=row.names(pca$x))) +"
+"0","  geom_point(size = (zutomayo$log_views)) + "
+"0","  geom_text_repel(size=3.3, max.overlaps = 7)"

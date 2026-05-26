@@ -1,0 +1,403 @@
+{
+  "version": 1,
+  "locale": "en_US",
+  "platform": "4.6.0",
+  "metadata": {
+    "appmode": "static",
+    "primary_rmd": null,
+    "primary_html": "test_upload.qmd",
+    "content_category": null,
+    "has_parameters": false
+  },
+  "packages": null,
+  "files": {
+    ".posit/publish/April28Class9-A7BR.toml": {
+      "checksum": "e62afa59319cf41e14dcd1acdabfed3b"
+    },
+    ".posit/publish/deployments/deployment-00K1.toml": {
+      "checksum": "647d7668ed4f3a61fecbb5dcbc47c7a3"
+    },
+    "AnalysisOfAllFeatures.csv": {
+      "checksum": "b7d8044d0116f1965772a7c40dd16d56"
+    },
+    "CandyProject.html": {
+      "checksum": "3c9c53ab9a27f88d022bc0a6102e52d2"
+    },
+    "CandyProject.pdf": {
+      "checksum": "2d3f55bbb2634dea61edb05bb797495f"
+    },
+    "CandyProject.qmd": {
+      "checksum": "c0b4dc7d5a35313a4c34b3bd0bf435d1"
+    },
+    "CandyProject_files/figure-html/unnamed-chunk-13-1.png": {
+      "checksum": "563d872837e51face78e30ac291391d0"
+    },
+    "CandyProject_files/figure-html/unnamed-chunk-14-1.png": {
+      "checksum": "3c90b2d88dd43f265e67754ca0a8b966"
+    },
+    "CandyProject_files/figure-html/unnamed-chunk-8-1.png": {
+      "checksum": "8bcc3af9c587a969f741927ce7b5cec0"
+    },
+    "CandyProject_files/figure-html/unnamed-chunk-8-2.png": {
+      "checksum": "1dfb5f31b4f7da769209663264d2fb98"
+    },
+    "CandyProject_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css": {
+      "checksum": "9e3ffae467580fdb927a41352e75a2e0"
+    },
+    "CandyProject_files/libs/bootstrap/bootstrap-icons.css": {
+      "checksum": "886da841d7421705f715f600c5ff11bb"
+    },
+    "CandyProject_files/libs/bootstrap/bootstrap-icons.woff": {
+      "checksum": "efe54401ef52214fd3b701e23ff88c5f"
+    },
+    "CandyProject_files/libs/bootstrap/bootstrap.min.js": {
+      "checksum": "e2b09c06f0e714b6144a6788a28e3950"
+    },
+    "CandyProject_files/libs/clipboard/clipboard.min.js": {
+      "checksum": "15f52a1ee547f2bdd46e56747332ca2d"
+    },
+    "CandyProject_files/libs/quarto-html/anchor.min.js": {
+      "checksum": "91bcf6cd1fd88fec3f109811e5fc3546"
+    },
+    "CandyProject_files/libs/quarto-html/axe/axe-check.js": {
+      "checksum": "b4f6a44157bfe20b68b69aabf2f8125d"
+    },
+    "CandyProject_files/libs/quarto-html/popper.min.js": {
+      "checksum": "3a4a291ccf3f1ea0f82b641542fd3827"
+    },
+    "CandyProject_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css": {
+      "checksum": "7b89279ff1a6dce999919e0e67d4d9ec"
+    },
+    "CandyProject_files/libs/quarto-html/quarto.js": {
+      "checksum": "a65a7780c10232b6515cdfb8beaaa221"
+    },
+    "CandyProject_files/libs/quarto-html/tabsets/tabsets.js": {
+      "checksum": "e8d6a8862b33ccc461f8fd532e05b365"
+    },
+    "CandyProject_files/libs/quarto-html/tippy.css": {
+      "checksum": "ebd6f8ce46a677e1a4f5f8a8317109a9"
+    },
+    "CandyProject_files/libs/quarto-html/tippy.umd.min.js": {
+      "checksum": "d828775275749701b48bd9d958814111"
+    },
+    "features2.csv": {
+      "checksum": "732366e42bc3dc22a95349d4fea768c1"
+    },
+    "featuresfixed.csv": {
+      "checksum": "f57a9c820534c0adb6936e14d0070b93"
+    },
+    "MrsvsZutomayoSongdata.csv": {
+      "checksum": "732366e42bc3dc22a95349d4fea768c1"
+    },
+    "test_upload.qmd": {
+      "checksum": "691da35a3208c973f32eaa02352dff7a"
+    },
+    "test_upload_files/figure-html/unnamed-chunk-10-2.png": {
+      "checksum": "4e94a5e851484e6058eae1166aa46b50"
+    },
+    "test_upload_files/figure-html/unnamed-chunk-10-3.png": {
+      "checksum": "667cfcce0e0d802480da9ef1adfe6efc"
+    },
+    "test_upload_files/figure-html/unnamed-chunk-12-2.png": {
+      "checksum": "97e0c871519b32725620667597412087"
+    },
+    "test_upload_files/figure-html/unnamed-chunk-12-3.png": {
+      "checksum": "d0490f9f976686886bc710dcbb13ddd8"
+    },
+    "test_upload_files/figure-html/unnamed-chunk-13-1.png": {
+      "checksum": "877e049b23abc7610d01a83eee5a72db"
+    },
+    "test_upload_files/figure-html/unnamed-chunk-13-2.png": {
+      "checksum": "4f3082f0bd433cf2cd9352301bafa7ba"
+    },
+    "test_upload_files/figure-html/unnamed-chunk-14-1.png": {
+      "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "test_upload_files/figure-html/unnamed-chunk-15-1.png": {
+      "checksum": "3b471138b52911603b1053fe3edaa4d0"
+    },
+    "test_upload_files/figure-html/unnamed-chunk-16-1.png": {
+      "checksum": "03c538407e7545e6024e51d4504f7413"
+    },
+    "test_upload_files/figure-html/unnamed-chunk-6-1.png": {
+      "checksum": "4fd582577f28c902a5ce8b4f32de8095"
+    },
+    "test_upload_files/figure-html/unnamed-chunk-6-2.png": {
+      "checksum": "0d3afc02f28206b67bb6e398b561ffeb"
+    },
+    "test_upload_files/figure-html/unnamed-chunk-7-1.png": {
+      "checksum": "3c384c5e7c96695eeae07a53d6e5b356"
+    },
+    "test_upload_files/figure-html/unnamed-chunk-7-2.png": {
+      "checksum": "f4367dad5a69ab506bad4b605ce98907"
+    },
+    "test_upload_files/figure-html/unnamed-chunk-8-3.png": {
+      "checksum": "3b909851a08dcaa22631a230b2a978be"
+    },
+    "test_upload_files/figure-html/unnamed-chunk-8-4.png": {
+      "checksum": "2b5e80b41e7b204087ed9cf36c69c029"
+    },
+    "test_upload_files/figure-html/unnamed-chunk-9-1.png": {
+      "checksum": "99513f8d2af8a5b42f941ece0a635834"
+    },
+    "test_upload_files/figure-html/unnamed-chunk-9-2.png": {
+      "checksum": "1a9ce745e4b3baaf7ae5332108aa8c45"
+    },
+    "test_upload_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css": {
+      "checksum": "9e3ffae467580fdb927a41352e75a2e0"
+    },
+    "test_upload_files/libs/bootstrap/bootstrap-icons.css": {
+      "checksum": "886da841d7421705f715f600c5ff11bb"
+    },
+    "test_upload_files/libs/bootstrap/bootstrap-icons.woff": {
+      "checksum": "efe54401ef52214fd3b701e23ff88c5f"
+    },
+    "test_upload_files/libs/bootstrap/bootstrap.min.js": {
+      "checksum": "e2b09c06f0e714b6144a6788a28e3950"
+    },
+    "test_upload_files/libs/clipboard/clipboard.min.js": {
+      "checksum": "15f52a1ee547f2bdd46e56747332ca2d"
+    },
+    "test_upload_files/libs/crosstalk-1.2.2/css/crosstalk.min.css": {
+      "checksum": "3372343a6739e49faffeb858d451558e"
+    },
+    "test_upload_files/libs/crosstalk-1.2.2/js/crosstalk.js": {
+      "checksum": "0cedbe7e922170c10db55772f82139e3"
+    },
+    "test_upload_files/libs/crosstalk-1.2.2/js/crosstalk.js.map": {
+      "checksum": "6f4eb7fff5f7965637440ad7be0fb877"
+    },
+    "test_upload_files/libs/crosstalk-1.2.2/js/crosstalk.min.js": {
+      "checksum": "66b6e84d85256249d722c6e94143eb73"
+    },
+    "test_upload_files/libs/crosstalk-1.2.2/js/crosstalk.min.js.map": {
+      "checksum": "7a0a37270ea71dee56cebc627c58ca03"
+    },
+    "test_upload_files/libs/crosstalk-1.2.2/scss/crosstalk.scss": {
+      "checksum": "e5410240dcb4f51691eab5f9a62720d7"
+    },
+    "test_upload_files/libs/htmltools-fill-0.5.9/fill.css": {
+      "checksum": "0c307b2ce7a3fa7f260a0451457c809f"
+    },
+    "test_upload_files/libs/htmlwidgets-1.6.4/htmlwidgets.js": {
+      "checksum": "237f59bc086ccf24f39be55311023b91"
+    },
+    "test_upload_files/libs/jquery-3.5.1/jquery-AUTHORS.txt": {
+      "checksum": "dd27520eef04b799446eee1483b8ecc5"
+    },
+    "test_upload_files/libs/jquery-3.5.1/jquery.js": {
+      "checksum": "23c7c5d2d1317508e807a6c7f777d6ed"
+    },
+    "test_upload_files/libs/jquery-3.5.1/jquery.min.js": {
+      "checksum": "dc5e7f18c8d36ac1d3d4753a87c98d0a"
+    },
+    "test_upload_files/libs/jquery-3.5.1/jquery.min.map": {
+      "checksum": "c146c0e93beb81320c0f98cd7c2f4890"
+    },
+    "test_upload_files/libs/plotly-binding-4.12.0/plotly.js": {
+      "checksum": "3c7c9d64b95cebf57b0180d466b17239"
+    },
+    "test_upload_files/libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css": {
+      "checksum": "150e4929cfd53a8a39835d40a108a54e"
+    },
+    "test_upload_files/libs/plotly-main-2.25.2/plotly-latest.min.js": {
+      "checksum": "154690fd3da83096a8857f0d84f0a1af"
+    },
+    "test_upload_files/libs/quarto-html/anchor.min.js": {
+      "checksum": "91bcf6cd1fd88fec3f109811e5fc3546"
+    },
+    "test_upload_files/libs/quarto-html/axe/axe-check.js": {
+      "checksum": "b4f6a44157bfe20b68b69aabf2f8125d"
+    },
+    "test_upload_files/libs/quarto-html/popper.min.js": {
+      "checksum": "3a4a291ccf3f1ea0f82b641542fd3827"
+    },
+    "test_upload_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css": {
+      "checksum": "7b89279ff1a6dce999919e0e67d4d9ec"
+    },
+    "test_upload_files/libs/quarto-html/quarto.js": {
+      "checksum": "a65a7780c10232b6515cdfb8beaaa221"
+    },
+    "test_upload_files/libs/quarto-html/tabsets/tabsets.js": {
+      "checksum": "e8d6a8862b33ccc461f8fd532e05b365"
+    },
+    "test_upload_files/libs/quarto-html/tippy.css": {
+      "checksum": "ebd6f8ce46a677e1a4f5f8a8317109a9"
+    },
+    "test_upload_files/libs/quarto-html/tippy.umd.min.js": {
+      "checksum": "d828775275749701b48bd9d958814111"
+    },
+    "test_upload_files/libs/typedarray-0.1/typedarray.min.js": {
+      "checksum": "4db25a9ed5c5fcf2dd1746f27be2ef39"
+    },
+    "tripleanalysis.csv": {
+      "checksum": "fc7a6bd76c79323a9f58093ca0f4fd79"
+    },
+    "tripleemotion.csv": {
+      "checksum": "a56ed91dd91b76e7af4df6cd5169f565"
+    },
+    "TruerChordAnalysis.csv": {
+      "checksum": "69851877b299f3590c55e80f6964a627"
+    },
+    "Zutomayo_final.csv": {
+      "checksum": "1565bc8f3f077f4a485486cc9ae3ed35"
+    },
+    "Zutomayo_lyrics.csv": {
+      "checksum": "a1ee5641072dc0e4abf15f460c9d02c7"
+    },
+    "zutomayoanalyssi.html": {
+      "checksum": "1b13f88e4a679e5887e90b2c8e2a277f"
+    },
+    "zutomayoanalyssi.qmd": {
+      "checksum": "5ee169e92dd109f36f1c51179f4a6367"
+    },
+    "zutomayoanalyssi_files/figure-html/unnamed-chunk-10-2.png": {
+      "checksum": "4e94a5e851484e6058eae1166aa46b50"
+    },
+    "zutomayoanalyssi_files/figure-html/unnamed-chunk-10-3.png": {
+      "checksum": "667cfcce0e0d802480da9ef1adfe6efc"
+    },
+    "zutomayoanalyssi_files/figure-html/unnamed-chunk-12-2.png": {
+      "checksum": "97e0c871519b32725620667597412087"
+    },
+    "zutomayoanalyssi_files/figure-html/unnamed-chunk-12-3.png": {
+      "checksum": "d0490f9f976686886bc710dcbb13ddd8"
+    },
+    "zutomayoanalyssi_files/figure-html/unnamed-chunk-13-1.png": {
+      "checksum": "877e049b23abc7610d01a83eee5a72db"
+    },
+    "zutomayoanalyssi_files/figure-html/unnamed-chunk-13-2.png": {
+      "checksum": "4f3082f0bd433cf2cd9352301bafa7ba"
+    },
+    "zutomayoanalyssi_files/figure-html/unnamed-chunk-3-1.png": {
+      "checksum": "e22493c85616a73d3a9a349be1e80ee1"
+    },
+    "zutomayoanalyssi_files/figure-html/unnamed-chunk-5-1.png": {
+      "checksum": "94c7c9989c85b2cabfd0e1b146a8b013"
+    },
+    "zutomayoanalyssi_files/figure-html/unnamed-chunk-6-1.png": {
+      "checksum": "4fd582577f28c902a5ce8b4f32de8095"
+    },
+    "zutomayoanalyssi_files/figure-html/unnamed-chunk-6-2.png": {
+      "checksum": "0d3afc02f28206b67bb6e398b561ffeb"
+    },
+    "zutomayoanalyssi_files/figure-html/unnamed-chunk-7-1.png": {
+      "checksum": "3c384c5e7c96695eeae07a53d6e5b356"
+    },
+    "zutomayoanalyssi_files/figure-html/unnamed-chunk-7-2.png": {
+      "checksum": "f4367dad5a69ab506bad4b605ce98907"
+    },
+    "zutomayoanalyssi_files/figure-html/unnamed-chunk-8-1.png": {
+      "checksum": "ddfdb86eb252ed82530793b88f193efb"
+    },
+    "zutomayoanalyssi_files/figure-html/unnamed-chunk-8-2.png": {
+      "checksum": "9352ceb0d16a75da5f6cf45d35aa2dba"
+    },
+    "zutomayoanalyssi_files/figure-html/unnamed-chunk-8-3.png": {
+      "checksum": "3b909851a08dcaa22631a230b2a978be"
+    },
+    "zutomayoanalyssi_files/figure-html/unnamed-chunk-8-4.png": {
+      "checksum": "2b5e80b41e7b204087ed9cf36c69c029"
+    },
+    "zutomayoanalyssi_files/figure-html/unnamed-chunk-9-1.png": {
+      "checksum": "99513f8d2af8a5b42f941ece0a635834"
+    },
+    "zutomayoanalyssi_files/figure-html/unnamed-chunk-9-2.png": {
+      "checksum": "1a9ce745e4b3baaf7ae5332108aa8c45"
+    },
+    "zutomayoanalyssi_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css": {
+      "checksum": "9e3ffae467580fdb927a41352e75a2e0"
+    },
+    "zutomayoanalyssi_files/libs/bootstrap/bootstrap-icons.css": {
+      "checksum": "886da841d7421705f715f600c5ff11bb"
+    },
+    "zutomayoanalyssi_files/libs/bootstrap/bootstrap-icons.woff": {
+      "checksum": "efe54401ef52214fd3b701e23ff88c5f"
+    },
+    "zutomayoanalyssi_files/libs/bootstrap/bootstrap.min.js": {
+      "checksum": "e2b09c06f0e714b6144a6788a28e3950"
+    },
+    "zutomayoanalyssi_files/libs/clipboard/clipboard.min.js": {
+      "checksum": "15f52a1ee547f2bdd46e56747332ca2d"
+    },
+    "zutomayoanalyssi_files/libs/crosstalk-1.2.2/css/crosstalk.min.css": {
+      "checksum": "3372343a6739e49faffeb858d451558e"
+    },
+    "zutomayoanalyssi_files/libs/crosstalk-1.2.2/js/crosstalk.js": {
+      "checksum": "0cedbe7e922170c10db55772f82139e3"
+    },
+    "zutomayoanalyssi_files/libs/crosstalk-1.2.2/js/crosstalk.js.map": {
+      "checksum": "6f4eb7fff5f7965637440ad7be0fb877"
+    },
+    "zutomayoanalyssi_files/libs/crosstalk-1.2.2/js/crosstalk.min.js": {
+      "checksum": "66b6e84d85256249d722c6e94143eb73"
+    },
+    "zutomayoanalyssi_files/libs/crosstalk-1.2.2/js/crosstalk.min.js.map": {
+      "checksum": "7a0a37270ea71dee56cebc627c58ca03"
+    },
+    "zutomayoanalyssi_files/libs/crosstalk-1.2.2/scss/crosstalk.scss": {
+      "checksum": "e5410240dcb4f51691eab5f9a62720d7"
+    },
+    "zutomayoanalyssi_files/libs/htmltools-fill-0.5.9/fill.css": {
+      "checksum": "0c307b2ce7a3fa7f260a0451457c809f"
+    },
+    "zutomayoanalyssi_files/libs/htmlwidgets-1.6.4/htmlwidgets.js": {
+      "checksum": "237f59bc086ccf24f39be55311023b91"
+    },
+    "zutomayoanalyssi_files/libs/jquery-3.5.1/jquery-AUTHORS.txt": {
+      "checksum": "dd27520eef04b799446eee1483b8ecc5"
+    },
+    "zutomayoanalyssi_files/libs/jquery-3.5.1/jquery.js": {
+      "checksum": "23c7c5d2d1317508e807a6c7f777d6ed"
+    },
+    "zutomayoanalyssi_files/libs/jquery-3.5.1/jquery.min.js": {
+      "checksum": "dc5e7f18c8d36ac1d3d4753a87c98d0a"
+    },
+    "zutomayoanalyssi_files/libs/jquery-3.5.1/jquery.min.map": {
+      "checksum": "c146c0e93beb81320c0f98cd7c2f4890"
+    },
+    "zutomayoanalyssi_files/libs/plotly-binding-4.12.0/plotly.js": {
+      "checksum": "3c7c9d64b95cebf57b0180d466b17239"
+    },
+    "zutomayoanalyssi_files/libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css": {
+      "checksum": "150e4929cfd53a8a39835d40a108a54e"
+    },
+    "zutomayoanalyssi_files/libs/plotly-main-2.25.2/plotly-latest.min.js": {
+      "checksum": "154690fd3da83096a8857f0d84f0a1af"
+    },
+    "zutomayoanalyssi_files/libs/quarto-html/anchor.min.js": {
+      "checksum": "91bcf6cd1fd88fec3f109811e5fc3546"
+    },
+    "zutomayoanalyssi_files/libs/quarto-html/axe/axe-check.js": {
+      "checksum": "b4f6a44157bfe20b68b69aabf2f8125d"
+    },
+    "zutomayoanalyssi_files/libs/quarto-html/popper.min.js": {
+      "checksum": "3a4a291ccf3f1ea0f82b641542fd3827"
+    },
+    "zutomayoanalyssi_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css": {
+      "checksum": "7b89279ff1a6dce999919e0e67d4d9ec"
+    },
+    "zutomayoanalyssi_files/libs/quarto-html/quarto.js": {
+      "checksum": "a65a7780c10232b6515cdfb8beaaa221"
+    },
+    "zutomayoanalyssi_files/libs/quarto-html/tabsets/tabsets.js": {
+      "checksum": "e8d6a8862b33ccc461f8fd532e05b365"
+    },
+    "zutomayoanalyssi_files/libs/quarto-html/tippy.css": {
+      "checksum": "ebd6f8ce46a677e1a4f5f8a8317109a9"
+    },
+    "zutomayoanalyssi_files/libs/quarto-html/tippy.umd.min.js": {
+      "checksum": "d828775275749701b48bd9d958814111"
+    },
+    "zutomayoanalyssi_files/libs/typedarray-0.1/typedarray.min.js": {
+      "checksum": "4db25a9ed5c5fcf2dd1746f27be2ef39"
+    },
+    "Zutomayosongs.csv": {
+      "checksum": "aad55c205e407949718303bd166fc203"
+    },
+    "Zutomayosongs.xlsx": {
+      "checksum": "39b9ea6c989896c0f585f31b448d5754"
+    }
+  },
+  "users": null
+}

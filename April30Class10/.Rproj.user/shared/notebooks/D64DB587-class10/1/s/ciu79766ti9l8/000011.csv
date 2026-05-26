@@ -1,0 +1,6 @@
+"0","rd <- rmsd(pdbs)"
+"0",""
+"0","hc.rd <- hclust(dist(rd))"
+"0","grps.rd <- cutree(hc.rd, k=3)"
+"0",""
+"0","plot(pc, 1:2, col=""grey50"", bg=grps.rd, pch=21, cex=1)"

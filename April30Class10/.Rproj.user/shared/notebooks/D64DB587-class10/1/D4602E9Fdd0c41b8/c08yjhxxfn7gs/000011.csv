@@ -1,0 +1,39 @@
+"0","adk <- read.pdb(""2ANH"")"
+"1","  Note: Accessing on-line PDB file
+"
+"0","adk"
+"1","
+ Call:  "
+"1",""
+"1","read.pdb(file = ""2ANH"")"
+"1",""
+"1","
+"
+"1","
+   Total Models#: 1
+     Total Atoms#: 6772,  XYZs#: 20316  Chains#: 2  (values: A B)
+
+     Protein Atoms#: 6566  (residues/Calpha atoms#: 892)
+     Nucleic acid Atoms#: 0  (residues/phosphate atoms#: 0)
+
+     Non-protein/nucleic Atoms#: 206  (residues: 194)
+     Non-protein/nucleic resid values: [ HOH (185), PO4 (3), ZN (6) ]
+
+"
+"1","   Protein sequence:
+"
+"1",""
+"1","      MPVLENRAAQGDITAPGGARRLTGDQTAALRDSLSDKPAKNIILLIGDGMGDSEITAARN
+      YAEGAGGFFKGIDALPLTGQYTHYALNKKTGKPDYVTDSAASATAWSTGVKTYNGALGVD
+      IHEKDHPTILEMAKAAGLATGNVSTAELQHATPAALVAHVTSRKCYGPSATSEKCPGNAL
+      EKGGKGSITEQLLNARADVTLGGGAKTFAETATAGEWQGKTLREQ...<cut>...LGLK"
+"1",""
+"1","
+
+"
+"1","+ attr: atom, xyz, seqres, helix, sheet,"
+"1","
+"
+"1","        calpha, remark, call"
+"1","
+"

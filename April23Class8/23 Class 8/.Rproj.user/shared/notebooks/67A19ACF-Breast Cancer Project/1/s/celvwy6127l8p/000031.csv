@@ -1,0 +1,4 @@
+"0","wistsingle.hclust <- hclust(dist(scale(wisc.data)), method = ""single"")"
+"0","wistavg.hclust <- hclust(dist(scale(wisc.data)), method = ""average"")"
+"0","wistwardD2.hclust <- hclust(dist(scale(wisc.data)), method = ""ward.D2"")"
+"0","plot(wistsingle.hclust, main=""Single method"")"

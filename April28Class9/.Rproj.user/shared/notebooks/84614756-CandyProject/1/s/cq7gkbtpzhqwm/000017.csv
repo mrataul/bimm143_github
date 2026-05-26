@@ -1,0 +1,5 @@
+"0","# How about a plot of win vs price"
+"0","ggplot(candy) +"
+"0","  aes(winpercent, pricepercent, label=rownames(candy)) +"
+"0","  geom_point(col=my_cols) +"
+"0","  geom_text(col=my_cols)"

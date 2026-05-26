@@ -1,0 +1,4 @@
+- source: test_upload.qmd
+  posit-connect-cloud:
+    - id: 019df148-8b47-941e-2d8f-3960b0ea2772
+      url: https://connect.posit.cloud/keet1/content/019df148-8b47-941e-2d8f-3960b0ea2772

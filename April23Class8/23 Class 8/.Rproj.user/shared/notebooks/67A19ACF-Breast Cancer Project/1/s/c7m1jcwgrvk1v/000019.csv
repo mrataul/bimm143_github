@@ -1,0 +1,3 @@
+"0","fna.data <- ""WisconsinCancer.csv"""
+"0","wisc.df <- read.csv(fna.data, row.names=1)"
+"0","head(wisc.df, 3)"

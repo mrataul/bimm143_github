@@ -1,0 +1,8 @@
+"0","candy_file <- ""https://raw.githubusercontent.com/fivethirtyeight/data/master/candy-power-ranking/candy-data.csv"""
+"0","# save the data link into a variable candy_file"
+"0",""
+"0","candy = read.csv(candy_file, row.names=1)"
+"0","#use read.csv to save the data into a data frame variable 'candy', and eliminates the first header so that row names start with the flavors"
+"0",""
+"0",""
+"0","head(candy)"

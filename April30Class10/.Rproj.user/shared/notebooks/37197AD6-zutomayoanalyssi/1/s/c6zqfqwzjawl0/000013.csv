@@ -1,0 +1,4 @@
+"0",""
+"0",""
+"0","emotion <- read.csv(""tripleemotion.csv"", row.names=1)"
+"0","head(emotion)"

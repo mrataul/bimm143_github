@@ -1,0 +1,3 @@
+"0","zutomayo <- read.csv(""features2.csv"", row.names=1)"
+"0",""
+"0","head(zutomayo)"

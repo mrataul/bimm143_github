@@ -1,0 +1,5 @@
+"0",""
+"0",""
+"0","ggplot(inst_pca$rotation) +"
+"0","  aes(PC2, reorder(rownames(inst_pca$rotation), PC2)) +"
+"0","  geom_col()"

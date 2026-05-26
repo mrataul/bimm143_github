@@ -1,0 +1,2 @@
+"0","p +"
+"0","  facet_wrap(~gapminder$continent)"

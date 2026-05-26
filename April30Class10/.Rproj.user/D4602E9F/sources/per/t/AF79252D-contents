@@ -1,0 +1,23 @@
+---
+title: "Class 11: AlphaFold"
+author: "Mankeerat Rataul"
+format: html
+---
+
+```{r}
+library(bio3d)
+
+pdb <- read.pdb("HIV_DIMER_23119_0.result/HIV_DIMER_23119_0/HIV_DIMER_23119_0_unrelaxed_rank_001_alphafold2_multimer_v3_model_4_seed_000.pdb")
+
+pdb
+```
+
+
+Make a vector of input PDB file names that we can read into R
+
+```{r}
+pdbfiles <- list.files("HIV_DIMER_23119_0.result/HIV_DIMER_23119_0/", pattern=".pdb", full.names=TRUE)
+
+pdbfiles
+```
+
