@@ -136,15 +136,15 @@ head(pdbseq(pdb))
 We can have a quick interactive view of any of these 'pdb' objects
 
 ```{r}
-library(bio3dview)
+##library(bio3dview)
 
-view.pdb(pdb)
+##view.pdb(pdb)
 ```
 Let's try a custom view!
 
 
 ```{r}
-view.pdb(pdb, colorScheme = "sse", backgroundColor = "skyblue")
+##view.pdb(pdb, colorScheme = "sse", backgroundColor = "skyblue")
 ```
 
 >Q. Create a custom view highlighting the active site ASP (`resno=25`), the two chains (in your choice of colors) and the ligand all on a custom color background?
@@ -152,13 +152,13 @@ view.pdb(pdb, colorScheme = "sse", backgroundColor = "skyblue")
 
 ```{r}
 
-library(NGLVieweR)
+##library(NGLVieweR)
 
-active_site <- atom.select(pdb, resno=25)
+##active_site <- atom.select(pdb, resno=25)
 
-view.pdb(pdb, highlight=active_site, highlight.style = "spacefill", cols = c("#98FF98", "#C9A0DC"), backgroundColor = "skyblue") |>
+##view.pdb(pdb, highlight=active_site, highlight.style = "spacefill", cols = c("#98FF98", "#C9A0DC"), backgroundColor = "skyblue") |>
 
-setRock()
+##setRock()
 ```
 
 
@@ -178,7 +178,7 @@ adk
 m <- nma(adk)
 plot(m)
 
-view.nma(m, pdb=adk)
+##view.nma(m, pdb=adk)
 ```
 
 Write out the results for viewing in Mol-star
@@ -274,10 +274,10 @@ plot(pc, 1:2, col="grey50", bg=grps.rd, pch=21, cex=1)
 
 ```{r}
 
-view.pca(pc)
+##view.pca(pc)
 pc1 <- mktrj(pc, pc=1, file="pc_1.pdb")
 ```
 
 The bottom is a result of the movement of this protein:
 
-![Animation of the movement of this protein](PC_1.PDB_animate-trajectory.mp4)
+[Animation of the movement of this protein](PC_1.PDB_animate-trajectory.mp4)
