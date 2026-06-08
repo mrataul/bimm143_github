@@ -1,0 +1,56 @@
+---
+title: "Reading the Fasta Data"
+author: "Mankeerat Rataul"
+format: html
+---
+
+```{r}
+library(bio3d)
+
+fasta <- read.fasta("A17932579_mutant_seq.fa")
+```
+
+
+```{r}
+sequences <- paste(fasta$ali[1,], collapse ="")
+sequence2 <- paste(fasta$ali[2,], collapse ="")
+sequences
+```
+
+Now we want to blast the sequence to find the closest match in the database. We can use the blast.pdb function from the bio3d package to do this.
+
+```{r}
+blast_result <- blast.pdb(sequences)
+
+blast_result
+```
+Next we gotta find the differences between the mutated sequence and the nonmutated sequence and find the specific changes
+
+```{r}
+# Assuming we have the non-mutated sequence in a variable called non_mutated_seq
+
+# Find the differences between the mutated sequence and the non-mutated sequence
+
+mutated_seq <- sequences
+
+non_mutated_seq <- sequence2
+
+# Find the positions where the sequences differ
+
+differences <- which(strsplit(mutated_seq, "")[[1]] != strsplit(non_mutated_seq, "")[[1]])
+
+
+# Print the differences
+for (pos in differences) {
+  cat("Position:", pos, "Mutated:", substr(mutated_seq, pos, pos), "Non-mutated:", substr(non_mutated_seq, pos, pos), "\n")
+}
+```
+Below I'm gonna look at the alignment between 
+
+
+```{r}
+alignment <- read.fasta("9A90_1_alignment (1).fasta")
+
+alignment
+```
+

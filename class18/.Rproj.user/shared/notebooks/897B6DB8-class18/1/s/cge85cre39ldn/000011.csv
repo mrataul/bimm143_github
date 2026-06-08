@@ -1,0 +1,3 @@
+"0","url <- ""https://www.cmi-pb.org/api/v2/rnaseq?versioned_ensembl_gene_id=eq.ENSG00000211896.7"""
+"0",""
+"0","rna <- read_json(url, simplifyVector = TRUE) "

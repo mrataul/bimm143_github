@@ -1,0 +1,4 @@
+"0","ggplot(ssrna) +"
+"0","  aes(x=visit, y=tpm, group=subject_id) +"
+"0","  geom_point() +"
+"0","  geom_line(alpha=0.2)"

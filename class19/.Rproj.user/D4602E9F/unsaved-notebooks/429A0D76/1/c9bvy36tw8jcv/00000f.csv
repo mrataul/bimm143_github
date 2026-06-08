@@ -1,0 +1,8 @@
+"0","alignment <- read.fasta(""9A90_1_alignment (1).fasta"")"
+"1","[1]"
+"1"," "" ** Duplicated sequence id's:  **"""
+"1","
+"
+"0","alignment"
+"2","Error in rep("" "", width) : invalid 'times' argument
+"

@@ -1,0 +1,3 @@
+"0","cdc$Number.of.Reported.Pertussis.Cases <- as.integer(gsub("","", """", cdc$Number.of.Reported.Pertussis.Cases))"
+"0",""
+"0","head(cdc)"

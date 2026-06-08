@@ -1,0 +1,8 @@
+"0","filter(igg, antigen==""FIM2/3"") %>%"
+"0","  ggplot() +"
+"0","  aes(MFI_normalised, col=infancy_vac) +"
+"0","  geom_boxplot(show.legend = TRUE) +"
+"0","  facet_wrap(vars(visit)) +"
+"0","  theme_bw() +"
+"0","  labs(title=""FIM2/3 Antigen IgG Levels by Vaccine Type and Visit"","
+"0","       x=""MFI Normalised"")"

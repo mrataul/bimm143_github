@@ -1,0 +1,4 @@
+"0",""
+"0","cdc <- read.csv(""U.S. Reported Pertussis Cases_ 1922 - 2025.csv"")"
+"0",""
+"0","head(cdc)"

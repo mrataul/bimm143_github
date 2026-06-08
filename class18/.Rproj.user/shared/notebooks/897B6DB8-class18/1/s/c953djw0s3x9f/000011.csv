@@ -1,0 +1,2 @@
+"0","igg <- abdata %>% filter(isotype == ""IgG"")"
+"0","head(igg, 300)"
