@@ -11,7 +11,7 @@ Class 02: [Sequence alignment fundamentals, algorithms and applications]
 
 Class 04: [Introduction to R](Week1&amp;2stuff/Day4Project/Class04.html)
 
-Class 05: Data viz with ggplot2(class5/class5.md)
+Class 05: [Data viz with ggplot2](class5/class5.md)
 
 Class 06: [R functions and R packages from CRAN and BioConductor](class6/class6.md)
 
@@ -27,9 +27,9 @@ Class 11: [Protein structure analysis](May5Class11/Project.pdf)
 
 Class 12: [Genome informatics (online class)](class12/class12.md)
 
-Class 13: [Transcriptomics and the analysis of RNA-Seq data](class1314/class13.md)
+Class 13: [Transcriptomics and the analysis of RNA-Seq data](class1314/Class13.md)
 
-Class 14: [RNA-Seq analysis mini-project](class1314/class14.md)
+Class 14: [RNA-Seq analysis mini-project](class1314/Class14.md)
 
 Class 16: [Essential UNIX for bioinformatics](class16/class16.md)
 
