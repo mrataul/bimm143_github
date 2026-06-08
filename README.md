@@ -5,9 +5,11 @@ My classwork for [BIMM 143 at UC San Diego](https://bioboot.github.io/bimm143_S2
 
 ## Index of classes
 
-Class 01: [Welcome to Bioinformatics](Week1&amp;2stuff/TestRenderDay1.md)
+Class 01: [Welcome to Bioinformatics](Class PDFS/Lab1edited.pdf)
 
-Class 02: [Sequence alignment fundamentals, algorithms and applications]
+Class 02: [Sequence alignment fundamentals, algorithms and applications](Class PDFS/Lab2edited.pdf)
+
+Class 03: [Advanced sequence alignment and database searching](Class PDFS/Lab3edited.pdf)
 
 Class 04: [Introduction to R](Week1&amp;2stuff/Day4Project/Class04.html)
 
