@@ -11,7 +11,7 @@ Class 02: [Sequence alignment fundamentals, algorithms and applications]
 
 Class 04: [Introduction to R](Week1&amp;2stuff/Day4Project/Class04.html)
 
-Class 05: [Data viz with ggplot2](class5/class5.md)
+Class 05: [Data viz with ggplot2](class5/class5.html)
 
 Class 06: [R functions and R packages from CRAN and BioConductor](class6/class6.md)
 
