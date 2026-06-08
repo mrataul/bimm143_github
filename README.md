@@ -31,8 +31,6 @@ Class 13: [Transcriptomics and the analysis of RNA-Seq data](class1314/Class13.m
 
 Class 14: [RNA-Seq analysis mini-project](class1314/Class14.md)
 
-Class 16: [Essential UNIX for bioinformatics](class16/class16.md)
-
 Class 18: [Mini Project: Investigating Pertussis Resurgence](class18/class18.md)
 
 Class 19: [Mini Project: Cancer Mutation Analysis](class19/class19.md)
