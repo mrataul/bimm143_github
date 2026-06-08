@@ -23,7 +23,7 @@ Class 09: [Candy Mini-Project](class9/class9.md)
 
 Class 10: [Structural Bioinformatics (pt1)](class10/class10.md)
 
-Class 11: [Protein structure analysis](May5Class11/Project.pdf)
+Class 11: [Protein structure analysis](class11/class11.md)
 
 Class 12: [Genome informatics (online class)](class12/class12.md)
 
