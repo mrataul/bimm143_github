@@ -87,7 +87,7 @@ A useful function here is the “base R” `sample()` function:
 sample(1:5, size=6, replace=TRUE)
 ```
 
-    [1] 4 3 3 4 2 3
+    [1] 1 3 5 3 2 3
 
 > Q2a. Your first version should return a multi-element vector of single
 > character nucleotides. For example generate_dna(6) might return “A”,
@@ -105,7 +105,7 @@ generate_dna <- function(DNA_len) {
 generate_dna(6)
 ```
 
-    [1] "G" "A" "C" "T" "C" "C"
+    [1] "A" "A" "C" "A" "C" "A"
 
 > Q2b. Your second version should optionally be able to return either a
 > multi-element vector of single character nucleotides (as before) or a
@@ -121,7 +121,7 @@ generate_dna2 <- function(DNA_len=6) {
 generate_dna2(6)
 ```
 
-    [1] "TGGAGA"
+    [1] "AGGTCT"
 
 > Q2c. Finally, create a final version of your function that prints out
 > a FASTA format sequence with an id line indicating the sequence
@@ -139,7 +139,7 @@ generate_dna3(6)
 ```
 
     >len6
-    ACTCTA
+    GGTTAG
 
 ## Q3. Write a generate_protein() function
 
@@ -155,7 +155,7 @@ generate_protein <- function(peptide_len=10) {
 generate_protein(10)
 ```
 
-    [1] "NNFKNRTSWP"
+    [1] "KYVCGTPFSL"
 
 ## Q4. Generate random protein sequences of length 6 to 13
 
@@ -173,21 +173,21 @@ for(i in 6:13) {
 ```
 
     >len6
-    ATYPRY
+    TLMAIM
     >len7
-    AYCPIDS
+    CCTMRRM
     >len8
-    QKYTRSAL
+    TLRGRSSQ
     >len9
-    RLQSPNIHL
+    TRTADSALA
     >len10
-    ASGAIFVIPH
+    KRQVHRPLNT
     >len11
-    HPYKFHCNNLN
+    LGQQDIHNHNK
     >len12
-    ERKPQDLRPRMY
+    MRHMSHWKEHCY
     >len13
-    KSDNQKWADRIFN
+    YILWMGEIMCHTF
 
 ## Q5. BLASTp search against nr — are your peptides “unique in nature”?
 

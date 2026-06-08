@@ -285,8 +285,8 @@ m <- nma(adk)
     Warning in nma.pdb(adk): Possible multi-chain structure or missing in-structure residue(s) present
       Fluctuations at neighboring positions may be affected.
 
-     Building Hessian...        Done in 0.33 seconds.
-     Diagonalizing Hessian...   Done in 17.82 seconds.
+     Building Hessian...        Done in 0.3 seconds.
+     Diagonalizing Hessian...   Done in 17 seconds.
 
 ``` r
 plot(m)
@@ -375,8 +375,8 @@ Search for related sequences in the database
 blast <- blast.pdb(aa)
 ```
 
-     Searching ... please wait (updates every 5 seconds) RID = 1BXUMGB6014 
-     ..............................................................................................................
+     Searching ... please wait (updates every 5 seconds) RID = 2D5RPM4B016 
+     ...........
      Reporting 96 hits
 
 ``` r
@@ -384,12 +384,12 @@ head(blast$hit.tbl)
 ```
 
             queryid subjectids identity alignmentlength mismatches gapopens q.start
-    1 Query_3724327     1AKE_A  100.000             214          0        0       1
-    2 Query_3724327     8BQF_A   99.533             214          1        0       1
-    3 Query_3724327     4X8M_A   99.533             214          1        0       1
-    4 Query_3724327     6S36_A   99.533             214          1        0       1
-    5 Query_3724327     9R6U_A   99.533             214          1        0       1
-    6 Query_3724327     9R71_A   99.533             214          1        0       1
+    1 Query_7910715     1AKE_A  100.000             214          0        0       1
+    2 Query_7910715     8BQF_A   99.533             214          1        0       1
+    3 Query_7910715     4X8M_A   99.533             214          1        0       1
+    4 Query_7910715     6S36_A   99.533             214          1        0       1
+    5 Query_7910715     9R6U_A   99.533             214          1        0       1
+    6 Query_7910715     9R71_A   99.533             214          1        0       1
       q.end s.start s.end    evalue bitscore positives mlog.evalue pdb.id    acc
     1   214       1   214 1.82e-156      432    100.00    358.6044 1AKE_A 1AKE_A
     2   214      21   234 2.98e-156      433    100.00    358.1114 8BQF_A 8BQF_A
